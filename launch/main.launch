@@ -1,0 +1,18 @@
+<launch>
+
+    <arg name="boxes_num" value="3" />
+
+    <!-- starting the interface -->
+    <node name="interface" pkg="multirobot-ranger-block" type="main.py" args="$(arg boxes_num)"/>
+
+    <!-- launching the robots -->
+    <group>
+        <arg name="robot_num" value="0" />
+        <node name="makeblock_$(arg robot_num)" pkg="multirobot-ranger-block" type="ranger.py" args="/dev/rfcomm$(arg robot_num) $(arg boxes_num)"/>
+    </group>
+    <group>
+        <arg name="robot_num" value="1" />
+        <node name="makeblock_$(arg robot_num)" pkg="multirobot-ranger-block" type="ranger.py" args="/dev/rfcomm$(arg robot_num) $(arg boxes_num)"/>
+    </group>
+
+</launch>
