@@ -4,17 +4,15 @@ import sys
 
 # Son lanzados por un fichero launch que les manda por parámetro el nombre de conexión
 
-# Recibe el numero de robot
-if len(sys.argv) >= 2 and sys.argv[1].isdigit():
-	robot_num = int(sys.argv[1])
+# Recibe el nombre del puerto del robot
+if len(sys.argv) >= 2:
+	makeblock_name = int(sys.argv[1])
 else:
 	sys.exit()
 
-makeblock=["/dev/rfcomm0", "/dev/rfcomm1"]
-
 # Se conecta al robot
 ap = AurigaPy(debug=False)
-ap.connect(makeblock[robot_num])
+ap.connect(makeblock_name)
 print("Conectado")
 
 # Prueba iluminar LED [BORRAR]
