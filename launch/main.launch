@@ -1,0 +1,10 @@
+<launch>
+
+    <!-- starting the interface -->
+    <node name="interface" pkg="multirobot-ranger-block" type="main.py"/>
+
+    <!-- launching the robots -->
+    <node name="makeblock_0" pkg="multirobot-ranger-block" type="ranger.py" args="/dev/rfcomm0"/>
+    <node name="makeblock_1" pkg="multirobot-ranger-block" type="ranger.py" args="/dev/rfcomm1"/>
+
+</launch>
